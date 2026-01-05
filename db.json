@@ -1,0 +1,152 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Finish monthly reporting",
+      "description": "Fill out the monthly report, so everyone in the company is happy and see your productivity!",
+      "dueDate": "Today",
+      "stage": "In progress",
+      "priority": "High",
+      "team": "Marketing 02",
+      "assignee": "John",
+      "type": "Report",
+      "project": "E-commerce stuff - Important",
+      "status": "completed",
+      "createdAt": "2024-01-15T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "title": "Contract signing",
+      "description": "",
+      "dueDate": "Today",
+      "stage": "In progress",
+      "priority": "Medium",
+      "team": "Operations",
+      "assignee": "Sarah",
+      "type": "Legal",
+      "status": "pending",
+      "createdAt": "2024-01-15T11:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "title": "Market overview keynote",
+      "description": "",
+      "dueDate": "Today",
+      "stage": "In progress",
+      "priority": "High",
+      "team": "Customer Care",
+      "assignee": "Mike",
+      "type": "Presentation",
+      "status": "pending",
+      "createdAt": "2024-01-15T12:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "title": "Brand proposal",
+      "description": "",
+      "dueDate": "Tomorrow",
+      "stage": "Not started",
+      "priority": "High",
+      "team": "Marketing 02",
+      "assignee": "John",
+      "type": "Proposal",
+      "status": "pending",
+      "createdAt": "2024-01-16T10:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "title": "Social media review",
+      "description": "",
+      "dueDate": "Tomorrow",
+      "stage": "In progress",
+      "priority": "Medium",
+      "team": "Operations",
+      "assignee": "Sarah",
+      "type": "Review",
+      "status": "pending",
+      "createdAt": "2024-01-16T11:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "title": "Report - Week 30",
+      "description": "",
+      "dueDate": "Tomorrow",
+      "stage": "Not started",
+      "priority": "Low",
+      "team": "Operations",
+      "assignee": "Sarah",
+      "type": "Report",
+      "status": "pending",
+      "createdAt": "2024-01-16T12:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "title": "Order check-ins",
+      "description": "",
+      "dueDate": "Wednesday",
+      "stage": "In progress",
+      "priority": "Medium",
+      "team": "Retails",
+      "assignee": "Tom",
+      "type": "Check-in",
+      "status": "pending",
+      "createdAt": "2024-01-17T10:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "title": "HR reviews",
+      "description": "",
+      "dueDate": "Wednesday",
+      "stage": "Not started",
+      "priority": "Medium",
+      "team": "People",
+      "assignee": "John",
+      "type": "Review",
+      "status": "pending",
+      "createdAt": "2024-01-17T11:00:00.000Z"
+    },
+    {
+      "id": 9,
+      "title": "Report - Week 30",
+      "description": "",
+      "dueDate": "Friday",
+      "stage": "Not started",
+      "priority": "Low",
+      "team": "Development",
+      "assignee": "Sarah",
+      "type": "Report",
+      "status": "pending",
+      "createdAt": "2024-01-19T10:00:00.000Z"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "taskId": 1,
+      "text": "We need to complete the monthly reporting by EOD",
+      "author": "John",
+      "createdAt": "2024-01-05T10:30:00.000Z"
+    },
+    {
+      "id": 2,
+      "taskId": 3,
+      "text": "The market overview keynote needs more data from Q4",
+      "author": "Sarah",
+      "createdAt": "2024-01-05T09:15:00.000Z"
+    },
+    {
+      "id": 3,
+      "taskId": 2,
+      "text": "Contract signing requires legal review first",
+      "author": "Mike",
+      "createdAt": "2024-01-05T08:45:00.000Z"
+    }
+  ],
+  "user": {
+    "id": 1,
+    "name": "John Deere",
+    "email": "john.deere@email.com",
+    "avatar": null,
+    "profilePhoto": null
+  }
+}
