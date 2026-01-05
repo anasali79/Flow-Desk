@@ -14,13 +14,13 @@ const NewCommentsWidget = () => {
 
   const [showAddModal, setShowAddModal] = useState(false)
 
-  // ✅ Fetch BOTH tasks & comments
+  //  Fetch BOTH tasks & comments
   useEffect(() => {
     dispatch(fetchTasks())
     dispatch(fetchComments())
   }, [dispatch])
 
-  // ✅ Map comments with correct task title
+  //  Map comments with correct task title
   const commentsWithTaskTitle = comments
     .map(comment => {
       const task = tasks.find(
@@ -38,14 +38,33 @@ const NewCommentsWidget = () => {
         new Date(a.createdAt || '1970-01-01')
     )
 
-  // ✅ Only show latest 5
+  //  Only show latest 5
   const recentComments = commentsWithTaskTitle.slice(0, 5)
+
+  // Function to format date to a readable time format
+  const formatTime = (dateString) => {
+    if (!dateString) return ''
+    const date = new Date(dateString)
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+  }
+
+  // Function to format date to a readable date format
+  const formatDate = (dateString) => {
+    if (!dateString) return ''
+    const date = new Date(dateString)
+    return date.toLocaleDateString([], { month: 'short', day: 'numeric' })
+  }
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700">
-      <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4 pb-4 border-b border-gray-200 dark:border-gray-700">
-        New comments
-      </h3>
+      <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-200 dark:border-gray-700">
+        <h3 className="text-xl font-bold text-gray-800 dark:text-white">
+          New comments
+        </h3>
+        <span className="text-sm text-gray-500 dark:text-gray-400">
+          {comments.length} comments
+        </span>
+      </div>
 
       <div className="-mx-6 mb-4">
         {recentComments.length > 0 ? (
@@ -65,6 +84,9 @@ const NewCommentsWidget = () => {
                 <p className="text-xs text-gray-500 dark:text-gray-400">
                   {comment.text || comment.comment}
                 </p>
+                <div className="text-xs text-gray-400 dark:text-gray-500 mt-1">
+                  {formatDate(comment.createdAt)} at {formatTime(comment.createdAt)}
+                </div>
               </div>
 
               <svg
