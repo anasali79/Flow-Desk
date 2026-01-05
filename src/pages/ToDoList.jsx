@@ -8,7 +8,8 @@ import {
   selectTasksFilters,
   clearFilters,
   setSearchQuery,
-  setFilter
+  setFilter,
+  setFilters
 } from '../store/taskSlice'
 
 import Sidebar from '../components/Sidebar'
@@ -48,6 +49,14 @@ const ToDoList = () => {
       updates: { status: newStatus, stage: newStage }
     }))
   }
+
+  const handleClearAllFilters = () => {
+    dispatch(clearFilters());
+    dispatch(setFilter('all'));
+    dispatch(setSearchQuery(''));
+  };
+
+  const hasActiveFilters = activeFilters.project || activeFilters.deadline || activeFilters.type || activeFilters.team;
 
   const getTasksByDueDate = (dueDate) => {
     return tasks.filter(task => {
@@ -89,7 +98,75 @@ const ToDoList = () => {
         <Header onNewTask={() => setShowAddModal(true)} title="To do list" />
 
         <div className="p-4 sm:p-6">
-          <FilterButtons />
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+            <FilterButtons />
+            <div className="flex items-center gap-3">
+              {hasActiveFilters && (
+                <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-700 rounded-lg px-3 py-2">
+                  <span className="text-sm text-gray-600 dark:text-gray-300">Active filters:</span>
+                  {activeFilters.project && (
+                    <span className="inline-flex items-center gap-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">
+                      Project: {activeFilters.project}
+                      <button 
+                        onClick={() => dispatch(setFilters({ project: null }))}
+                        className="text-blue-600 dark:text-blue-300 hover:text-blue-800 dark:hover:text-blue-100 ml-1"
+                      >
+                        ×
+                      </button>
+                    </span>
+                  )}
+                  {activeFilters.deadline && (
+                    <span className="inline-flex items-center gap-1 bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 text-xs px-2 py-1 rounded">
+                      Deadline: {activeFilters.deadline}
+                      <button 
+                        onClick={() => dispatch(setFilters({ deadline: null }))}
+                        className="text-green-600 dark:text-green-300 hover:text-green-800 dark:hover:text-green-100 ml-1"
+                      >
+                        ×
+                      </button>
+                    </span>
+                  )}
+                  {activeFilters.type && (
+                    <span className="inline-flex items-center gap-1 bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-200 text-xs px-2 py-1 rounded">
+                      Type: {activeFilters.type}
+                      <button 
+                        onClick={() => dispatch(setFilters({ type: null }))}
+                        className="text-purple-600 dark:text-purple-300 hover:text-purple-800 dark:hover:text-purple-100 ml-1"
+                      >
+                        ×
+                      </button>
+                    </span>
+                  )}
+                  {activeFilters.team && (
+                    <span className="inline-flex items-center gap-1 bg-yellow-100 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-200 text-xs px-2 py-1 rounded">
+                      Team: {activeFilters.team}
+                      <button 
+                        onClick={() => dispatch(setFilters({ team: null }))}
+                        className="text-yellow-600 dark:text-yellow-300 hover:text-yellow-800 dark:hover:text-yellow-100 ml-1"
+                      >
+                        ×
+                      </button>
+                    </span>
+                  )}
+                  <button
+                    onClick={handleClearAllFilters}
+                    className="text-xs bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+                  >
+                    Clear All
+                  </button>
+                </div>
+              )}
+              <button
+                onClick={() => setShowFiltersModal(true)}
+                className="px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg flex items-center gap-2"
+              >
+                <svg className="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                </svg>
+                <span>Add filters</span>
+              </button>
+            </div>
+          </div>
 
           {/* SECTIONS */}
           {sections.map((section) => {
